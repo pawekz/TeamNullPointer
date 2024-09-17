@@ -5,5 +5,6 @@ Instructions:
   spring.datasource.username= (you only know the username)
   spring.datasource.password= (you only know the password)
 3. in the SQLServer create a schema named `dbteamnullpointer`
-4. run the application
-5. use postman to POST and GET
+4. add mu sa corresponding `controller`, `entity`, `repository` and `service`
+5. run the project
+6. use postman to POST and GET
