@@ -37,3 +37,5 @@ build/
 # Eclipse
 .settings/
 application.properties
+
+TeamNullPointer.iml
