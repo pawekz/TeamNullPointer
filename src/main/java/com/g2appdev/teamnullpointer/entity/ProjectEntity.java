@@ -13,7 +13,6 @@ public class ProjectEntity {
     private String pname; //project name
     private String members;
     private int instructorId;
-    private int startDate;
     private int endDate;
 
     public ProjectEntity() {
@@ -25,7 +24,6 @@ public class ProjectEntity {
         this.pname = pname;
         this.members = members;
         this.instructorId = instructorId;
-        this.startDate = startDate;
         this.endDate = endDate;
     }
 
@@ -60,14 +58,6 @@ public class ProjectEntity {
 
     public void setInstructorId(int instructorId) {
         this.instructorId = instructorId;
-    }
-
-    public int getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(int startDate) {
-        this.startDate = startDate;
     }
 
     public int getEndDate() {

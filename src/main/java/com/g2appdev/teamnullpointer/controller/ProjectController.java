@@ -1,80 +1,40 @@
 package com.g2appdev.teamnullpointer.controller;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
+import com.g2appdev.teamnullpointer.entity.ProjectEntity;
+import com.g2appdev.teamnullpointer.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(method = RequestMethod.GET, path = "/project")
 public class ProjectController {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String pname;
-    private String members;
-    private int instructorId;
-    private int startDate;
-    private int endDate;
 
-    public ProjectController() {
-        super();
+    @Autowired
+    private ProjectService projectService;
+
+    //test
+    @GetMapping("/print")
+    public String print() {
+        return "Project Controller";
     }
-
-    public ProjectController(int id, String pname, String members, int instructorId, int startDate, int endDate) {
-        super();
-        this.id = id;
-        this.pname = pname; //project name
-        this.members = members;
-        this.instructorId = instructorId;
-        this.startDate = startDate;
-        this.endDate = endDate;
+    //CREATE
+    @PostMapping("/postprojectrecord")
+    public ProjectEntity postProjectRecord(@RequestBody ProjectEntity project) {
+        return projectService.postProjectRecord(project);
     }
-
-    public void setId(int id) {
-        this.id = id;
+    //READ ALL
+    @GetMapping("/getprojectrecords")
+    public Iterable<ProjectEntity> getProjectRecords() {
+        return projectService.getProjectRecords();
     }
-
-    public int getId() {
-        return id;
+    //UPDATE
+    @PutMapping("/updateprojectrecord")
+    public ProjectEntity putProjectDetails(@RequestParam int id, @RequestBody ProjectEntity newProjectDetails){
+        return projectService.putProjectDetails(id, newProjectDetails);
     }
-
-    public String getPname() {
-        return pname;
+    //DELETE
+    @DeleteMapping("/deleteprojectdetails/{id}")
+    public String deleteProjectDetails(@PathVariable int id) {
+        return projectService.deleteProject(id);
     }
-
-    public void setName(String name) {
-        this.pname = pname;
-    }
-
-    public String getMembers() {
-        return members;
-    }
-
-    public void setMembers(String members) {
-        this.members = members;
-    }
-
-    public int getInstructorId() {
-        return instructorId;
-    }
-
-    public void setInstructorId(int instructorId) {
-        this.instructorId = instructorId;
-    }
-
-    public int getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(int startDate) {
-        this.startDate = startDate;
-    }
-
-    public int getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(int endDate) {
-        this.endDate = endDate;
-    }
-
 }
