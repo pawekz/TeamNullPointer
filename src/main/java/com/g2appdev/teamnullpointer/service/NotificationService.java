@@ -20,6 +20,7 @@ public class NotificationService {
 
     public NotificationEntity postNotificationRepository(NotificationEntity notification){
         return nrepo.save(notification);
+
     }
 
    public List<NotificationEntity> getAllNotifications(){

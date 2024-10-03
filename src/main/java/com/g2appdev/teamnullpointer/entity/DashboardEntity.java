@@ -1,15 +1,20 @@
 package com.g2appdev.teamnullpointer.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.aspectj.weaver.ast.Not;
+
 
 @Entity
+@Table(name = "dashboard_entity")
 public class DashboardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+@OneToOne(cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+@JoinColumn(name = "notification_id")
+private NotificationEntity notification;
+
     private String user;
     private String instructor;
     private String course;
@@ -24,6 +29,15 @@ public class DashboardEntity {
         this.instructor = instructor;
         this.course = course;
         this.groupDetails = groupDetails;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setNotification(NotificationEntity notification) {
+        this.notification = notification;
     }
     public String getUser() {
         return user;
@@ -49,11 +63,7 @@ public class DashboardEntity {
     public void setGroupDetails(String groupDetails) {
         this.groupDetails = groupDetails;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public int getId() {
-        return id;
-    }
+
+
 }

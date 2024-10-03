@@ -5,6 +5,8 @@ import com.g2appdev.teamnullpointer.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.NameNotFoundException;
+
 @RestController
 @RequestMapping(method = RequestMethod.GET, path = "/dashboard")
 public class DashboardController {
@@ -25,7 +27,7 @@ public class DashboardController {
     }
 
     @PutMapping("/putdashboardrecord")
-    public DashboardEntity putDashboardRecord(@RequestParam int id, @RequestBody DashboardEntity newDashboard) {
+    public DashboardEntity putDashboardRecord(@RequestParam int id, @RequestBody DashboardEntity newDashboard) throws NameNotFoundException {
         return dashboardService.putDashboardRecord(id, newDashboard);
     }
 
